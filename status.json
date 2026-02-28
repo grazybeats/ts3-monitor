@@ -21,7 +21,10 @@
     {
       "id": "38542",
       "name": "[cspacer1]\ud83d\udc8e -= LOBBY =-\ud83d\udc8e",
-      "users": []
+      "users": [
+        "Maik",
+        "Smog"
+      ]
     },
     {
       "id": "38543",
@@ -41,10 +44,7 @@
     {
       "id": "38546",
       "name": "[cspacer2]\ud83c\udfa4 -= \u00dcBERGABE =-\ud83c\udfa4",
-      "users": [
-        "Smog",
-        "Maik"
-      ]
+      "users": []
     },
     {
       "id": "38547",
@@ -87,5 +87,5 @@
       "users": []
     }
   ],
-  "updated_at": "19:00"
+  "updated_at": "19:41"
 }
