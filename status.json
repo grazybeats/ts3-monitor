@@ -1,6 +1,88 @@
 {
   "status": "online",
-  "clients": 2,
-  "max": 26,
-  "last_update": "09:41:22"
+  "channels": [
+    {
+      "id": "38539",
+      "name": "[cspacer]=-=-=-=-=-=-=-=-=-=-=-=",
+      "users": []
+    },
+    {
+      "id": "38540",
+      "name": "[cspacer]\ud83c\udfdb\ufe0f -= EINGANGSHALLE =-\ud83c\udfdb\ufe0f",
+      "users": []
+    },
+    {
+      "id": "38541",
+      "name": "[cspacer1]=-=-=-=-=-=-=-=-=-=-=-=",
+      "users": []
+    },
+    {
+      "id": "38542",
+      "name": "[cspacer1]\ud83d\udc8e -= LOBBY =-\ud83d\udc8e",
+      "users": []
+    },
+    {
+      "id": "38543",
+      "name": "[cspacer7]=-=-=-=-=-=-=-=-=-=-=-=",
+      "users": []
+    },
+    {
+      "id": "38544",
+      "name": "[cspacer11]\ud83d\udc42\ud83c\udffb-= UNTER 4 OHREN =-\ud83d\udc42\ud83c\udffb",
+      "users": []
+    },
+    {
+      "id": "38545",
+      "name": "[cspacer12]=-=-=-=-=-=-=-=-=-=-=-=",
+      "users": []
+    },
+    {
+      "id": "38546",
+      "name": "[cspacer2]\ud83c\udfa4 -= \u00dcBERGABE =-\ud83c\udfa4",
+      "users": []
+    },
+    {
+      "id": "38547",
+      "name": "[cspacer8]=-=-=-=-=-=-=-=-=-=-=",
+      "users": []
+    },
+    {
+      "id": "38548",
+      "name": "[cspacer3]\ud83c\udfa4 -= ONAIR =-\ud83c\udfa4",
+      "users": []
+    },
+    {
+      "id": "38549",
+      "name": "[cspacer9]=-=-=-=-=-=-=-=-=-=-=-=",
+      "users": []
+    },
+    {
+      "id": "38550",
+      "name": "[cspacer4]\ud83d\udcbe -= PLATTENLADEN =-\ud83d\udcbe",
+      "users": []
+    },
+    {
+      "id": "38551",
+      "name": "[cspacer10]=-=-=-=-=-=-=-=-=-=-=-=",
+      "users": []
+    },
+    {
+      "id": "38552",
+      "name": "[cspacer5]\ud83d\udeab -= ABWESEND =-\ud83d\udeab",
+      "users": [
+        "Maik"
+      ]
+    },
+    {
+      "id": "38553",
+      "name": "[cspacer18]=-=-=-=-=-=-=-=-=-=-=-=",
+      "users": []
+    },
+    {
+      "id": "38554",
+      "name": "[cspacer19]\ud83d\udc6e\ud83c\udffc\u200d -= STRAFKAMMER =-\ud83d\udc6e\ud83c\udffc",
+      "users": []
+    }
+  ],
+  "updated_at": "09:52"
 }
