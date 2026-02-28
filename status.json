@@ -1,5 +1,7 @@
 {
   "status": "online",
+  "clients": 1,
+  "max": 26,
   "channels": [
     {
       "id": "38539",
@@ -84,5 +86,5 @@
       "users": []
     }
   ],
-  "updated_at": "09:52"
+  "updated_at": "09:56"
 }
