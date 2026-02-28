@@ -1,0 +1,29 @@
+name: TS3 Update Bot
+
+on:
+  schedule:
+    - cron: '*/5 * * * *' # Alle 5 Minuten
+  workflow_dispatch: # Erlaubt manuellen Start
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code auschecken
+        uses: actions/checkout@v3
+
+      - name: Python installieren
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: TS3 Daten abrufen
+        run: python fetch_ts3.py
+
+      - name: Datei speichern und hochladen
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git add status.json
+          git commit -m "TS3 Status Update" || exit 0
+          git push
