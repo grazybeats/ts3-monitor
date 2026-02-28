@@ -1,5 +1,6 @@
 {
-  "status": "waiting",
-  "clients": 0,
-  "max": 0
+  "status": "online",
+  "clients": 2,
+  "max": 26,
+  "last_update": "09:41:22"
 }
