@@ -3,7 +3,6 @@ import json
 import os
 
 def get_ts3_data():
-    # Deine TS3 Verbindungsdaten
     host = "51.38.106.208"
     port = 10087
     sid = 730
@@ -11,45 +10,60 @@ def get_ts3_data():
     pw = "WZRvdn7Z"
 
     try:
-        # Verbindung aufbauen
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.settimeout(10)
         s.connect((host, port))
         
-        # TS3 Query Protokoll bedienen
-        s.recv(1024) # Willkommens-Banner abfangen
+        s.recv(1024)
         s.sendall(f"login {user} {pw}\n".encode())
-        s.recv(1024) # Login Bestätigung
+        s.recv(1024)
         s.sendall(f"use sid={sid}\n".encode())
-        s.recv(1024) # Server Auswahl Bestätigung
+        s.recv(1024)
         
-        # Server-Info abfragen
-        s.sendall(b"serverinfo\n")
-        data = ""
+        # 1. Kanäle abrufen
+        s.sendall(b"channellist\n")
+        chan_data = ""
         while True:
             chunk = s.recv(4096).decode()
-            data += chunk
+            chan_data += chunk
             if "error id=0" in chunk: break
-        
+            
+        # 2. Clients abrufen
+        s.sendall(b"clientlist\n")
+        client_data = ""
+        while True:
+            chunk = s.recv(4096).decode()
+            client_data += chunk
+            if "error id=0" in chunk: break
+
         s.sendall(b"quit\n")
         s.close()
 
-        # Daten auslesen (Clients online)
-        online = data.split("virtualserver_clientsonline=")[1].split(" ")[0]
-        max_clients = data.split("virtualserver_maxclients=")[1].split(" ")[0]
+        # Kanäle parsen
+        channels = []
+        for c in chan_data.split('|'):
+            if "cid=" in c:
+                cid = c.split("cid=")[1].split(" ")[0]
+                name = c.split("channel_name=")[1].split(" ")[0].replace("\\s", " ")
+                channels.append({"id": cid, "name": name, "users": []})
+
+        # User den Kanälen zuordnen
+        for cl in client_data.split('|'):
+            if "client_type=0" in cl: # Nur echte User, keine Query-Bots
+                name = cl.split("client_nickname=")[1].split(" ")[0].replace("\\s", " ")
+                cid = cl.split("cid=")[1].split(" ")[0]
+                for chan in channels:
+                    if chan["id"] == cid:
+                        chan["users"].append(name)
 
         return {
             "status": "online",
-            "clients": int(online),
-            "max": int(max_clients),
-            "last_update": os.popen('date +"%H:%M:%S"').read().strip()
+            "channels": channels,
+            "updated_at": os.popen('date +"%H:%M"').read().strip()
         }
     except Exception as e:
         return {"status": "offline", "error": str(e)}
 
-# Ergebnis in die status.json schreiben
 result = get_ts3_data()
 with open("status.json", "w") as f:
     json.dump(result, f, indent=2)
-
-print(f"Update durchgeführt: {result}")
