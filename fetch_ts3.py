@@ -6,8 +6,8 @@ def get_ts3_data():
     host = "51.38.106.208"
     port = 10087
     sid = 730
-    user = "GrazyWeb"
-    pw = "WZRvdn7Z"
+    user = ""
+    pw = ""
 
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
