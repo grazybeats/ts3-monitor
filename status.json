@@ -22,7 +22,8 @@
       "id": "38542",
       "name": "[cspacer1]\ud83d\udc8e -= LOBBY =-\ud83d\udc8e",
       "users": [
-        "Maik"
+        "Maik",
+        "Smog"
       ]
     },
     {
@@ -73,9 +74,7 @@
     {
       "id": "38552",
       "name": "[cspacer5]\ud83d\udeab -= ABWESEND =-\ud83d\udeab",
-      "users": [
-        "Smog"
-      ]
+      "users": []
     },
     {
       "id": "38553",
@@ -88,5 +87,5 @@
       "users": []
     }
   ],
-  "updated_at": "19:00"
+  "updated_at": "19:43"
 }
