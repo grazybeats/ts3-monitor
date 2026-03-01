@@ -1,0 +1,136 @@
+# ============================================================
+# cleanup-old-runs.yml
+# Behält nur die letzten 5 completed Runs von main.yml
+# Löscht alle älteren automatisch nach jedem neuen Run
+# ============================================================
+name: Cleanup Old Workflow Runs
+
+on:
+  # Nach jedem Abschluss von main.yml aufrufen
+  workflow_run:
+    workflows: ["TS3 Status Update"]   # muss dem "name:" in main.yml entsprechen
+    types: [completed]
+
+  # Auch manuell auslösbar (für einmalige Bereinigung)
+  workflow_dispatch:
+    inputs:
+      keep:
+        description: 'Wie viele Runs behalten (Standard: 5)'
+        required: false
+        default: '5'
+      dry_run:
+        description: 'Nur anzeigen, nicht löschen (true/false)'
+        required: false
+        default: 'false'
+
+jobs:
+  cleanup:
+    name: Keep only last ${{ inputs.keep || 5 }} runs
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write   # Benötigt um Runs zu löschen
+
+    steps:
+      - name: Cleanup old runs of main.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const KEEP        = parseInt(core.getInput('keep') || '${{ inputs.keep || 5 }}');
+            const DRY_RUN     = '${{ inputs.dry_run || 'false' }}' === 'true';
+            const WORKFLOW    = 'main.yml';
+            const owner       = context.repo.owner;
+            const repo        = context.repo.repo;
+
+            core.info(`Konfiguration: KEEP=${KEEP}, DRY_RUN=${DRY_RUN}`);
+            core.info(`Repository: ${owner}/${repo}, Workflow: ${WORKFLOW}`);
+
+            // Alle Runs für main.yml abrufen (nur completed, neueste zuerst)
+            let allRuns = [];
+            let page    = 1;
+
+            while (true) {
+              const response = await github.rest.actions.listWorkflowRuns({
+                owner,
+                repo,
+                workflow_id: WORKFLOW,
+                status:      'completed',
+                per_page:    100,
+                page:        page,
+              });
+
+              const runs = response.data.workflow_runs;
+              if (runs.length === 0) break;
+
+              allRuns = allRuns.concat(runs);
+              if (runs.length < 100) break;
+              page++;
+            }
+
+            // Nach Datum sortieren – neueste zuerst
+            allRuns.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
+            core.info(`Gefundene Runs insgesamt: ${allRuns.length}`);
+            core.info(`Behalte die neuesten ${KEEP} Runs`);
+
+            // Runs die gelöscht werden sollen (alles nach Index KEEP)
+            const toDelete = allRuns.slice(KEEP);
+
+            if (toDelete.length === 0) {
+              core.info('✅ Nichts zu löschen – weniger als oder genau ${KEEP} Runs vorhanden.');
+              return;
+            }
+
+            core.info(`Zu löschende Runs: ${toDelete.length}`);
+
+            let deleted  = 0;
+            let failed   = 0;
+            let skipped  = 0;
+
+            for (const run of toDelete) {
+              const runInfo = `Run #${run.run_number} (ID: ${run.id}) vom ${run.created_at} – ${run.conclusion}`;
+
+              // Sicherheitsprüfung: Laufende Runs niemals löschen
+              if (run.status !== 'completed') {
+                core.warning(`⏭️ Übersprungen (nicht abgeschlossen): ${runInfo}`);
+                skipped++;
+                continue;
+              }
+
+              if (DRY_RUN) {
+                core.info(`[DRY-RUN] Würde löschen: ${runInfo}`);
+                deleted++;
+                continue;
+              }
+
+              try {
+                await github.rest.actions.deleteWorkflowRun({
+                  owner,
+                  repo,
+                  run_id: run.id,
+                });
+                core.info(`🗑️ Gelöscht: ${runInfo}`);
+                deleted++;
+
+                // Rate-Limit schonen: kurze Pause zwischen Löschanfragen
+                await new Promise(resolve => setTimeout(resolve, 300));
+
+              } catch (error) {
+                core.warning(`❌ Fehler beim Löschen von ${runInfo}: ${error.message}`);
+                failed++;
+              }
+            }
+
+            // Zusammenfassung
+            core.info('');
+            core.info('══════════════════════════════════════');
+            core.info(`✅ Ergebnis:`);
+            core.info(`   Gelöscht:     ${deleted}`);
+            core.info(`   Übersprungen: ${skipped}`);
+            core.info(`   Fehler:       ${failed}`);
+            core.info(`   Verbleibend:  ${Math.min(allRuns.length, KEEP)} Runs`);
+            core.info('══════════════════════════════════════');
+
+            if (failed > 0) {
+              core.setFailed(`${failed} Run(s) konnten nicht gelöscht werden.`);
+            }
