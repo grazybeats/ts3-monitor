@@ -1,6 +1,6 @@
 {
   "status": "online",
-  "clients": 2,
+  "clients": 1,
   "max": 26,
   "channels": [
     {
@@ -53,9 +53,7 @@
     {
       "id": "38548",
       "name": "[cspacer3]\ud83c\udfa4 -= ONAIR =-\ud83c\udfa4",
-      "users": [
-        "Kitty"
-      ]
+      "users": []
     },
     {
       "id": "38549",
@@ -88,5 +86,5 @@
       "users": []
     }
   ],
-  "updated_at": "19:48"
+  "updated_at": "21:05"
 }
