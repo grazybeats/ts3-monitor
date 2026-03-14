@@ -41,10 +41,7 @@
     {
       "id": "38546",
       "name": "[cspacer2]\ud83c\udfa4 -= \u00dcBERGABE =-\ud83c\udfa4",
-      "users": [
-        "Maik",
-        "Wolf"
-      ]
+      "users": []
     },
     {
       "id": "38547",
@@ -54,7 +51,9 @@
     {
       "id": "38548",
       "name": "[cspacer3]\ud83c\udfa4 -= ONAIR =-\ud83c\udfa4",
-      "users": []
+      "users": [
+        "Maik"
+      ]
     },
     {
       "id": "38549",
@@ -74,7 +73,9 @@
     {
       "id": "38552",
       "name": "[cspacer5]\ud83d\udeab -= ABWESEND =-\ud83d\udeab",
-      "users": []
+      "users": [
+        "Wolf"
+      ]
     },
     {
       "id": "38553",
@@ -87,5 +88,5 @@
       "users": []
     }
   ],
-  "updated_at": "17:02"
+  "updated_at": "17:56"
 }
