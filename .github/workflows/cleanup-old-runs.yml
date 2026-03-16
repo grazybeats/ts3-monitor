@@ -8,7 +8,7 @@ name: Cleanup Old Workflow Runs
 on:
   # Nach jedem Abschluss von main.yml aufrufen
   workflow_run:
-    workflows: ["TS3 Status Update"]   # muss dem "name:" in main.yml entsprechen
+    workflows: ["TS3 Status Bot"]   # muss dem "name:" in main.yml entsprechen
     types: [completed]
 
   # Auch manuell auslösbar (für einmalige Bereinigung)
