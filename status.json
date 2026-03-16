@@ -1,6 +1,6 @@
 {
   "status": "online",
-  "clients": 0,
+  "clients": 1,
   "max": 26,
   "channels": [
     {
@@ -71,7 +71,9 @@
     {
       "id": "38552",
       "name": "[cspacer5]\ud83d\udeab -= ABWESEND =-\ud83d\udeab",
-      "users": []
+      "users": [
+        "Maik"
+      ]
     },
     {
       "id": "38553",
@@ -84,5 +86,5 @@
       "users": []
     }
   ],
-  "updated_at": "12:02"
+  "updated_at": "15:46"
 }
