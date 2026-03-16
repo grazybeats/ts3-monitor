@@ -1,4 +1,4 @@
-name: TS3 Update Bot
+name: TS3 Update-Bot
 
 on:
   schedule:
