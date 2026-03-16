@@ -16,7 +16,7 @@ on:
     inputs:
       keep:
         description: 'Wie viele Runs behalten (Standard: 5)'
-        required: false
+        required: true
         default: '5'
       dry_run:
         description: 'Nur anzeigen, nicht löschen (true/false)'
