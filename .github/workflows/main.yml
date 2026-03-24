@@ -2,7 +2,7 @@ name: TS3 Update-Bot
 
 on:
   schedule:
-    - cron: '*/5 * * * *' # Alle 5 Minuten
+    - cron: '*/1 * * * *' # Aller 1 Minute
   workflow_dispatch: # Erlaubt manuellen Start
 
 jobs:
