@@ -21,7 +21,9 @@
     {
       "id": "38542",
       "name": "[cspacer1]\ud83d\udc8e -= LOBBY =-\ud83d\udc8e",
-      "users": []
+      "users": [
+        "Wolf"
+      ]
     },
     {
       "id": "38543",
@@ -41,7 +43,9 @@
     {
       "id": "38546",
       "name": "[cspacer2]\ud83c\udfa4 -= \u00dcBERGABE =-\ud83c\udfa4",
-      "users": []
+      "users": [
+        "Maik"
+      ]
     },
     {
       "id": "38547",
@@ -51,9 +55,7 @@
     {
       "id": "38548",
       "name": "[cspacer3]\ud83c\udfa4 -= ONAIR =-\ud83c\udfa4",
-      "users": [
-        "Wolf"
-      ]
+      "users": []
     },
     {
       "id": "38549",
@@ -73,9 +75,7 @@
     {
       "id": "38552",
       "name": "[cspacer5]\ud83d\udeab -= ABWESEND =-\ud83d\udeab",
-      "users": [
-        "Maik"
-      ]
+      "users": []
     },
     {
       "id": "38553",
@@ -88,5 +88,5 @@
       "users": []
     }
   ],
-  "updated_at": "16:02"
+  "updated_at": "17:05"
 }
