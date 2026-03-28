@@ -1,6 +1,6 @@
 {
   "status": "online",
-  "clients": 0,
+  "clients": 2,
   "max": 26,
   "channels": [
     {
@@ -51,7 +51,9 @@
     {
       "id": "38548",
       "name": "[cspacer3]\ud83c\udfa4 -= ONAIR =-\ud83c\udfa4",
-      "users": []
+      "users": [
+        "Wolf"
+      ]
     },
     {
       "id": "38549",
@@ -71,7 +73,9 @@
     {
       "id": "38552",
       "name": "[cspacer5]\ud83d\udeab -= ABWESEND =-\ud83d\udeab",
-      "users": []
+      "users": [
+        "Maik"
+      ]
     },
     {
       "id": "38553",
@@ -84,5 +88,5 @@
       "users": []
     }
   ],
-  "updated_at": "15:05"
+  "updated_at": "16:02"
 }
