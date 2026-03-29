@@ -1,6 +1,6 @@
 {
   "status": "online",
-  "clients": 2,
+  "clients": 0,
   "max": 26,
   "channels": [
     {
@@ -31,10 +31,7 @@
     {
       "id": "38544",
       "name": "[cspacer11]\ud83d\udc42\ud83c\udffb-= UNTER 4 OHREN =-\ud83d\udc42\ud83c\udffb",
-      "users": [
-        "Glause Gasteiger",
-        "Eawas & Servas"
-      ]
+      "users": []
     },
     {
       "id": "38545",
@@ -87,5 +84,5 @@
       "users": []
     }
   ],
-  "updated_at": "23:02"
+  "updated_at": "00:02"
 }
