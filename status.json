@@ -1,6 +1,6 @@
 {
   "status": "online",
-  "clients": 0,
+  "clients": 2,
   "max": 26,
   "channels": [
     {
@@ -21,7 +21,10 @@
     {
       "id": "38542",
       "name": "[cspacer1]\ud83d\udc8e -= LOBBY =-\ud83d\udc8e",
-      "users": []
+      "users": [
+        "Maik",
+        "Trauml\u00f6we"
+      ]
     },
     {
       "id": "38543",
@@ -84,5 +87,5 @@
       "users": []
     }
   ],
-  "updated_at": "10:40"
+  "updated_at": "11:37"
 }
