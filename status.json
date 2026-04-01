@@ -22,8 +22,7 @@
       "id": "38542",
       "name": "[cspacer1]\ud83d\udc8e -= LOBBY =-\ud83d\udc8e",
       "users": [
-        "Maik",
-        "Trauml\u00f6we"
+        "Maik"
       ]
     },
     {
@@ -54,7 +53,9 @@
     {
       "id": "38548",
       "name": "[cspacer3]\ud83c\udfa4 -= ONAIR =-\ud83c\udfa4",
-      "users": []
+      "users": [
+        "Trauml\u00f6we"
+      ]
     },
     {
       "id": "38549",
@@ -87,5 +88,5 @@
       "users": []
     }
   ],
-  "updated_at": "15:46"
+  "updated_at": "16:40"
 }
