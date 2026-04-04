@@ -113,7 +113,7 @@ jobs:
                 deleted++;
 
                 // Rate-Limit schonen: kurze Pause zwischen Löschanfragen
-                await new Promise(resolve => setTimeout(resolve, 300));
+                await new Promise(resolve => setTimeout(resolve, 150));
 
               } catch (error) {
                 core.warning(`❌ Fehler beim Löschen von ${runInfo}: ${error.message}`);
