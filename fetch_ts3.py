@@ -3,7 +3,7 @@ import json
 import os
 
 def get_ts3_data():
-    host = "ts03.server4voice.de"
+    host = "ts03.server4voice.de:2660"
     port = 10087
     sid = 730
     user = ""
