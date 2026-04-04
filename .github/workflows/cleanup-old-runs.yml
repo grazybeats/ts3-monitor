@@ -55,7 +55,7 @@ jobs:
                 repo,
                 workflow_id: WORKFLOW,
                 status:      'completed',
-                per_page:    100,
+                per_page:    50,
                 page:        page,
               });
 
@@ -63,7 +63,7 @@ jobs:
               if (runs.length === 0) break;
 
               allRuns = allRuns.concat(runs);
-              if (runs.length < 100) break;
+              if (runs.length < 50) break;
               page++;
             }
 
